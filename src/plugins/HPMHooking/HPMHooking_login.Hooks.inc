@@ -562,8 +562,7 @@ DBMap* HP_DB_alloc(const char *file, const char *func, int line, DBType type, DB
 }
 DBKey HP_DB_i2key(int key) {
 	int hIndex = 0;
-	DBKey retVal___;
-	memset(&retVal___, '\0', sizeof(DBKey));
+	DBKey retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_i2key_pre ) {
 		DBKey (*preHookFunc) (int *key);
 		*HPMforce_return = false;
@@ -590,8 +589,7 @@ DBKey HP_DB_i2key(int key) {
 }
 DBKey HP_DB_ui2key(unsigned int key) {
 	int hIndex = 0;
-	DBKey retVal___;
-	memset(&retVal___, '\0', sizeof(DBKey));
+	DBKey retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_ui2key_pre ) {
 		DBKey (*preHookFunc) (unsigned int *key);
 		*HPMforce_return = false;
@@ -618,8 +616,7 @@ DBKey HP_DB_ui2key(unsigned int key) {
 }
 DBKey HP_DB_str2key(const char *key) {
 	int hIndex = 0;
-	DBKey retVal___;
-	memset(&retVal___, '\0', sizeof(DBKey));
+	DBKey retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_str2key_pre ) {
 		DBKey (*preHookFunc) (const char *key);
 		*HPMforce_return = false;
@@ -646,8 +643,7 @@ DBKey HP_DB_str2key(const char *key) {
 }
 DBKey HP_DB_i642key(int64 key) {
 	int hIndex = 0;
-	DBKey retVal___;
-	memset(&retVal___, '\0', sizeof(DBKey));
+	DBKey retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_i642key_pre ) {
 		DBKey (*preHookFunc) (int64 *key);
 		*HPMforce_return = false;
@@ -674,8 +670,7 @@ DBKey HP_DB_i642key(int64 key) {
 }
 DBKey HP_DB_ui642key(uint64 key) {
 	int hIndex = 0;
-	DBKey retVal___;
-	memset(&retVal___, '\0', sizeof(DBKey));
+	DBKey retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_ui642key_pre ) {
 		DBKey (*preHookFunc) (uint64 *key);
 		*HPMforce_return = false;
@@ -702,8 +697,7 @@ DBKey HP_DB_ui642key(uint64 key) {
 }
 DBData HP_DB_i2data(int data) {
 	int hIndex = 0;
-	DBData retVal___;
-	memset(&retVal___, '\0', sizeof(DBData));
+	DBData retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_i2data_pre ) {
 		DBData (*preHookFunc) (int *data);
 		*HPMforce_return = false;
@@ -730,8 +724,7 @@ DBData HP_DB_i2data(int data) {
 }
 DBData HP_DB_ui2data(unsigned int data) {
 	int hIndex = 0;
-	DBData retVal___;
-	memset(&retVal___, '\0', sizeof(DBData));
+	DBData retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_ui2data_pre ) {
 		DBData (*preHookFunc) (unsigned int *data);
 		*HPMforce_return = false;
@@ -758,8 +751,7 @@ DBData HP_DB_ui2data(unsigned int data) {
 }
 DBData HP_DB_ptr2data(void *data) {
 	int hIndex = 0;
-	DBData retVal___;
-	memset(&retVal___, '\0', sizeof(DBData));
+	DBData retVal___ = { 0 };
 	if( HPMHooks.count.HP_DB_ptr2data_pre ) {
 		DBData (*preHookFunc) (void *data);
 		*HPMforce_return = false;
@@ -2828,8 +2820,7 @@ int HP_login_waiting_disconnect_timer(int tid, int64 tick, int id, intptr_t data
 }
 DBData HP_login_create_online_user(DBKey key, va_list args) {
 	int hIndex = 0;
-	DBData retVal___;
-	memset(&retVal___, '\0', sizeof(DBData));
+	DBData retVal___ = { 0 };
 	if( HPMHooks.count.HP_login_create_online_user_pre ) {
 		DBData (*preHookFunc) (DBKey *key, va_list args);
 		*HPMforce_return = false;
