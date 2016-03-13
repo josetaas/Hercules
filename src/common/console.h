@@ -22,10 +22,13 @@
 
 #include "common/hercules.h"
 #include "common/db.h"
-#include "common/mutex.h"
 #include "common/spinlock.h"
 #include "common/sql.h"
 #include "common/thread.h"
+
+/* Forward Declarations */
+struct mutex_data;
+struct cond_data;
 
 /**
  * Queue Max
@@ -72,8 +75,8 @@ struct console_input_interface {
 	SPIN_LOCK ptlock;/* parse thread lock */
 	rAthread *pthread;/* parse thread */
 	volatile int32 ptstate;/* parse thread state */
-	ramutex *ptmutex;/* parse thread mutex */
-	racond *ptcond;/* parse thread cond */
+	struct mutex_data *ptmutex; ///< parse thread mutex.
+	struct cond_data *ptcond;   ///< parse thread conditional variable.
 	/* */
 	VECTOR_DECL(struct CParseEntry *) command_list;
 	VECTOR_DECL(struct CParseEntry *) commands;
