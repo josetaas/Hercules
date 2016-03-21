@@ -2881,13 +2881,18 @@ void clif_updatestatus(struct map_session_data *sd,int type)
 			WFIFOL(fd,4)=sd->battle_status.max_sp;
 			break;
 		case SP_HP:
-			WFIFOL(fd,4)=sd->battle_status.hp;
+			if (battle_config.official_hp_display_when_died) { // On official servers, the HP of Novice class is never go below 50%.
+				WFIFOL(fd, 4) = sd->battle_status.hp ? sd->battle_status.hp : (sd->class_&MAPID_UPPERMASK) != MAPID_NOVICE ? 1 : sd->battle_status.max_hp / 2;
+			} 
+			else { // Athena Behavior
+				WFIFOL(fd, 4) = sd->battle_status.hp;
+			}
 			// TODO: Won't these overwrite the current packet?
-			if( map->list[sd->bl.m].hpmeter_visible )
+			if (map->list[sd->bl.m].hpmeter_visible)
 				clif->hpmeter(sd);
-			if( !battle_config.party_hp_mode && sd->status.party_id )
+			if (!battle_config.party_hp_mode && sd->status.party_id)
 				clif->party_hp(sd);
-			if( sd->bg_id )
+			if (sd->bg_id)
 				clif->bg_hp(sd);
 			break;
 		case SP_SP:
